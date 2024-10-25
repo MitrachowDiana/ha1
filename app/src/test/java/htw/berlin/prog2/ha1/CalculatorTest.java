@@ -91,31 +91,35 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should reverse the sign of the number on the screen")
-    void testReverseSign(){
-        Calculator calc= new Calculator();
+    void testReverseSign() {
+        Calculator calc = new Calculator();
 
         calc.pressDigitKey(5);
         calc.pressNegativeKey();
 
-        String expected= "-5";
-        String actual= calc.readScreen();
-        assertEquals(expected,actual);
+        String expected = "-5";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
     }
 
+    //Neuer roter Test zu Teilaufgabe 2.
 
     @Test
-    @DisplayName("should repeat last operation when equals is pressed again and again")
-    void testRepeatedEqualsKey() {
+    @DisplayName("should add and subtract several numbers in succession")
+    void testLongString() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(4);
         calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(2);
-        calc.pressEqualsKey();
-        calc.pressEqualsKey();
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(7);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(8);
         calc.pressEqualsKey();
 
-        String expected = "10";
+
+        String expected = "7";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -140,5 +144,7 @@ class CalculatorTest {
     }
 
 
-}
+    }
+
+
 
